@@ -3,7 +3,7 @@ import dotenv from 'dotenv';
 import { TestCase } from './testcase/api';
 import { PublishOutcome, SyncOutcome, TmsClient } from './tms/api';
 import { TestReport } from './report/api';
-import path from "path";
+import path from 'path';
 
 dotenv.config();
 
@@ -108,8 +108,9 @@ export default async function main(): Promise<void> {
 
   {
     let vcsClient = rt.getVcsClient();
-    let modifiedFiles = (await testCaseRepository.saveModified(syncTestCases)).map(testCase => testCase.source());
-    vcsClient.syncToRemote(modifiedFiles);
+    let testCases = await testCaseRepository.saveModified(syncTestCases);
+    let modifiedFiles = [...new Set(testCases.map(testCase => testCase.source()))];
+    await vcsClient.syncToRemote(modifiedFiles);
   }
 
   let testReportRepository = rt.getTestReportRepository();

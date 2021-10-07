@@ -6,6 +6,10 @@ const config = {
 
   reports: ['features/_report/*.json'],
 
+  vcs: {
+    message: 'Synchronized test cases'
+  },
+
   azure_devops: {
     serviceUrl: process.env.AZURE_DEVOPS_URL || 'unknown',
     accessToken: process.env.AZURE_DEVOPS_TOKEN || 'unknown',

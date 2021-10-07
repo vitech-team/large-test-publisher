@@ -15,6 +15,10 @@ export interface AzureDevopsOpts {
   buildId: string;
 }
 
+export interface VcsOpts {
+  message: string;
+}
+
 export interface Config {
   cwd: string;
   specs: string[];
@@ -22,6 +26,8 @@ export interface Config {
   language: string;
 
   reports: string[];
+
+  vcs: VcsOpts
 
   azure_devops?: AzureDevopsOpts;
 }
@@ -47,6 +53,6 @@ export class RuntimeConfig {
   }
 
   getVcsClient(): VcsClient {
-    return new SimpleGitClient();
+    return new SimpleGitClient(this.config.vcs);
   }
 }

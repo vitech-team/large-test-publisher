@@ -1,3 +1,3 @@
 export interface VcsClient {
-  syncToRemote(updatedFeatureFiles: string[]): void;
+  syncToRemote(files: string[]): Promise<void>;
 }

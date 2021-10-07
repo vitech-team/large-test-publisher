@@ -21,6 +21,7 @@
     "fast-glob": "^3.2.7",
     "js2xmlparser": "^4.0.1",
     "prettier": "^2.4.1",
+    "simple-git": "^2.46.0",
     "tiny-types": "^1.16.1",
     "typed-rest-client": "^1.8.6"
   },
@@ -33,5 +34,12 @@
   },
   "bin": {
     "large-test-publisher": "./bin/large-test-publisher"
+  },
+  "files": [
+    "bin/",
+    "lib/"
+  ],
+  "directories": {
+    "lib": "./lib"
   }
 }

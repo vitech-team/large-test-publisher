@@ -1,3 +1,3 @@
-import main from './lib/cli';
+import main from './src/cli';
 
 (async () => main())();
