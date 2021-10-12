@@ -4,9 +4,16 @@ import { VcsClient } from './vcs/api';
 import { TestCase, TestCaseRepository } from './testcase/api';
 import { GherkinFeatureRepository } from './testcase/GherkinFeatureRepository';
 import { SerenityBDDReportRepository } from './report/SerenityBDDReportRepository';
-import * as azdev from 'azure-devops-node-api';
 import { AzureDevopsClient } from './tms/AzureDevopsClient';
 import { SimpleGitClient } from './vcs/SimpleGitClient';
+
+export interface AzureDevopsOpts {
+  serviceUrl: string;
+  accessToken: string;
+  projectName: string;
+  testPlan: string;
+  buildId: string;
+}
 
 export interface Config {
   cwd: string;
@@ -15,6 +22,8 @@ export interface Config {
   language: string;
 
   reports: string[];
+
+  azure_devops?: AzureDevopsOpts;
 }
 
 export class RuntimeConfig {
@@ -28,28 +37,16 @@ export class RuntimeConfig {
     return new SerenityBDDReportRepository(this.config.reports, this.config.cwd);
   }
 
-  getTmsClient(): TmsClient<any> {
-    const azureApi = new azdev.WebApi(
-      process.env.AZURE_DEVOPS_URL || 'unknown',
-      azdev.getPersonalAccessTokenHandler(process.env.AZURE_DEVOPS_TOKEN || 'unknown')
-    );
-    let project = process.env.AZURE_DEVOPS_PROJECT || 'unknown';
+  getTmsClient(): TmsClient<any, any> {
+    this.config.azure_devops;
+    if (this.config.azure_devops) {
+      return new AzureDevopsClient(this.config.azure_devops);
+    }
 
-    return new AzureDevopsClient(azureApi, project);
+    throw new Error('Unable to determine Test Management System configuration');
   }
 
   getVcsClient(): VcsClient {
     return new SimpleGitClient();
   }
 }
-
-const config: Config = {
-  cwd: process.cwd(),
-  specs: ['features/**/*.feature'],
-
-  language: 'en',
-
-  reports: ['target/site/serenity/*.json'],
-};
-
-export default config;

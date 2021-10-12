@@ -1,0 +1,259 @@
+{
+  "id": "few-parameterised-scenarios;scenario-outline",
+  "name": "Scenario outline",
+  "title": "Scenario outline",
+  "manual": false,
+  "testSteps": [
+    {
+      "number": 1,
+      "description": "Scenario outline #1 - param: value1",
+      "startTime": 1634534906206,
+      "children": [
+        {
+          "number": 2,
+          "description": "Given precondition",
+          "startTime": 1634534906207,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 3,
+          "description": "When step with value1",
+          "startTime": 1634534906207,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 4,
+          "description": "And second step",
+          "startTime": 1634534906208,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 5,
+          "description": "Then assertion",
+          "startTime": 1634534906209,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 6,
+          "description": "After",
+          "startTime": 1634534906209,
+          "children": [
+            {
+              "number": 7,
+              "description": "OktaAdmin deletes test accounts in OKTA",
+              "startTime": 1634534906220,
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 0,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 11,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 8,
+          "description": "After",
+          "startTime": 1634534906220,
+          "children": [
+            {
+              "number": 9,
+              "description": "OktaAdmin closes browser",
+              "startTime": 1634534906231,
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 300,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 312,
+          "result": "SUCCESS"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 338,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 10,
+      "description": "Scenario outline #2 - param: value2",
+      "startTime": 1634534906545,
+      "children": [
+        {
+          "number": 11,
+          "description": "Given precondition",
+          "startTime": 1634534906546,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 12,
+          "description": "When step with value2",
+          "startTime": 1634534906546,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 13,
+          "description": "And second step",
+          "startTime": 1634534906547,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 14,
+          "description": "Then assertion",
+          "startTime": 1634534906547,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 15,
+          "description": "After",
+          "startTime": 1634534906548,
+          "children": [
+            {
+              "number": 16,
+              "description": "OktaAdmin deletes test accounts in OKTA",
+              "startTime": 1634534906559,
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 0,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 11,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 17,
+          "description": "After",
+          "startTime": 1634534906560,
+          "children": [
+            {
+              "number": 18,
+              "description": "OktaAdmin closes browser",
+              "startTime": 1634534906570,
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 335,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 346,
+          "result": "SUCCESS"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 372,
+      "result": "SUCCESS"
+    }
+  ],
+  "userStory": {
+    "id": "few-parameterised-scenarios",
+    "storyName": "Few parameterised scenarios",
+    "path": "features/group/f3.feature",
+    "type": "feature"
+  },
+  "dataTable": {
+    "scenarioOutline": "Given precondition\nWhen step with <param>\nAnd second step\nThen assertion",
+    "dataSetDescriptors": [
+      {
+        "name": "",
+        "description": "",
+        "startRow": 0,
+        "rowCount": 2
+      }
+    ],
+    "headers": [
+      "param"
+    ],
+    "rows": [
+      {
+        "values": [
+          "value1"
+        ],
+        "result": "SUCCESS"
+      },
+      {
+        "values": [
+          "value2"
+        ],
+        "result": "SUCCESS"
+      }
+    ],
+    "predefinedRows": true
+  },
+  "startTime": 1634534906206,
+  "testSource": "Cucumber",
+  "tags": [
+    {
+      "name": "group",
+      "type": "capability",
+      "displayName": "group"
+    },
+    {
+      "name": "group/Few parameterised scenarios",
+      "type": "feature",
+      "displayName": "Few parameterised scenarios"
+    },
+    {
+      "name": "testcase",
+      "type": "tag",
+      "displayName": "testcase"
+    },
+    {
+      "name": "userstory",
+      "type": "tag",
+      "displayName": "userstory"
+    }
+  ],
+  "featureTag": {
+    "name": "group/Few parameterised scenarios",
+    "type": "feature",
+    "displayName": "Few parameterised scenarios"
+  },
+  "duration": 711
+}

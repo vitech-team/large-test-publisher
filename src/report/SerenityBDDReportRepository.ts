@@ -1,7 +1,7 @@
 import { SerenityBDDReport } from '@serenity-js/serenity-bdd/lib/stage/crew/serenity-bdd-reporter/SerenityBDDJsonSchema';
 import { readFile } from 'fs';
 import path from 'path';
-import { TestReport, TestReportRepository, TestStepOutcome } from './api';
+import { StepOutcome, TestReport, TestReportRepository, TestStepOutcome } from './api';
 import { TestCase } from '../testcase/api';
 import util from 'util';
 import { resolveFiles } from '../utils';
@@ -14,7 +14,18 @@ class SerenityBDDReportResult implements TestReport {
   }
 
   testStepOutcomes(): TestStepOutcome[] {
-    return [];
+    if (this.testCase.parameterized()) {
+      return this.report.testSteps.map(step => {
+        return {
+          outcome: step.result === 'SUCCESS' ? StepOutcome.Success : StepOutcome.Failure,
+        } as TestStepOutcome;
+      });
+    }
+    return [
+      {
+        outcome: this.report.result === 'SUCCESS' ? StepOutcome.Success : StepOutcome.Failure,
+      } as TestStepOutcome,
+    ];
   }
 }
 

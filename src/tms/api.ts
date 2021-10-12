@@ -16,20 +16,21 @@ export interface SyncResult {
 export enum PublishOutcome {
   Successful,
   Failed,
+  Empty,
 }
 
 export interface PublishResult {
-  outcomes: PublishOutcome[];
+  outcome: PublishOutcome;
   testReport: TestReport;
 }
 
-export abstract class TmsClient<ID> {
+export abstract class TmsClient<ID, CONTEXT> {
   async syncTestCase(testCase: TestCase): Promise<SyncResult> {
     console.log(`Synchronizing test case: '${testCase.name()}'`);
 
     let outcome;
     try {
-      let testCaseId = this.getTestCaseId(testCase);
+      let testCaseId = this.findTestCaseId(testCase);
 
       if (testCaseId) {
         let updated = await this.updateTestCase(testCaseId, testCase);
@@ -48,26 +49,46 @@ export abstract class TmsClient<ID> {
       }
     } catch (err) {
       outcome = SyncOutcome.Failed;
-      console.log(`Failed to synchronize test case ${testCase.name()}`);
+      console.log(`Failed to synchronize test case '${testCase.name()}'`);
       console.log(err);
     }
 
     return { outcome, testCase };
   }
 
-  async publishTestReport(testReport: TestReport): Promise<PublishResult> {
-    let testCaseId = this.getTestCaseId(testReport.testCase);
-    return {
-      outcomes: [PublishOutcome.Successful],
-      testReport,
-    };
+  async publishTestReports(testReports: TestReport[]): Promise<PublishResult[]> {
+    let context = await this.setupRunContext();
+
+    let result = [];
+    for (let testReport of testReports) {
+      let outcome: PublishOutcome;
+      try {
+        await this.addTestReportToRunContext(testReport, context);
+        outcome = PublishOutcome.Successful;
+      } catch (err) {
+        outcome = PublishOutcome.Failed;
+        console.log(`Failed to publish test report for '${testReport.testCase.name()}'`);
+        console.log(err);
+      }
+      result.push({ outcome, testReport });
+    }
+
+    await this.finalizeRunContext(context);
+
+    return result;
   }
 
-  protected abstract getTestCaseId(testCase: TestCase): ID | undefined;
+  protected abstract findTestCaseId(testCase: TestCase): ID | undefined;
 
   protected abstract saveTestCaseId(testCaseId: ID, testCase: TestCase): void;
 
   protected abstract createTestCase(testCase: TestCase): Promise<ID>;
 
   protected abstract updateTestCase(testCaseId: ID, testCase: TestCase): Promise<boolean>;
+
+  protected abstract setupRunContext(): Promise<CONTEXT>;
+
+  protected abstract addTestReportToRunContext(testReport: TestReport, context: CONTEXT): Promise<boolean>;
+
+  protected abstract finalizeRunContext(context: CONTEXT): Promise<void>;
 }

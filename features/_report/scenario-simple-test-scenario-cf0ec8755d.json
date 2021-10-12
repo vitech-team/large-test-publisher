@@ -1,0 +1,122 @@
+{
+  "id": "simple-feature;simple-test-scenario",
+  "name": "Simple test scenario",
+  "title": "Simple test scenario",
+  "manual": false,
+  "testSteps": [
+    {
+      "number": 1,
+      "description": "Given precondition",
+      "startTime": 1634534905110,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 4,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 2,
+      "description": "When first step",
+      "startTime": 1634534905116,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 2,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 3,
+      "description": "And second step",
+      "startTime": 1634534905118,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 1,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 4,
+      "description": "Then assertion",
+      "startTime": 1634534905120,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 0,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 5,
+      "description": "After",
+      "startTime": 1634534905121,
+      "children": [
+        {
+          "number": 6,
+          "description": "OktaAdmin deletes test accounts in OKTA",
+          "startTime": 1634534905133,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SUCCESS"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 13,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 7,
+      "description": "After",
+      "startTime": 1634534905134,
+      "children": [
+        {
+          "number": 8,
+          "description": "OktaAdmin closes browser",
+          "startTime": 1634534905144,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 356,
+          "result": "SUCCESS"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 367,
+      "result": "SUCCESS"
+    }
+  ],
+  "userStory": {
+    "id": "simple-feature",
+    "storyName": "Simple feature",
+    "path": "features/f1.feature",
+    "type": "feature"
+  },
+  "startTime": 1634534905107,
+  "testSource": "Cucumber",
+  "featureTag": {
+    "name": "Simple feature",
+    "type": "feature",
+    "displayName": "Simple feature"
+  },
+  "tags": [
+    {
+      "name": "Simple feature",
+      "type": "feature",
+      "displayName": "Simple feature"
+    },
+    {
+      "name": "testcase",
+      "type": "tag",
+      "displayName": "testcase"
+    },
+    {
+      "name": "userstory",
+      "type": "tag",
+      "displayName": "userstory"
+    }
+  ],
+  "result": "SUCCESS",
+  "duration": 407
+}

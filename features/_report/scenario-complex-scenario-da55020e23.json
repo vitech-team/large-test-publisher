@@ -1,0 +1,247 @@
+{
+  "id": "complex-scenario",
+  "name": "Complex scenario",
+  "title": "Complex scenario",
+  "manual": false,
+  "testSteps": [
+    {
+      "number": 1,
+      "description": "Given precondition",
+      "startTime": 1634534905110,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 3,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 2,
+      "description": "And first step",
+      "startTime": 1634534905114,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 4,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 3,
+      "description": "But except step",
+      "startTime": 1634534905119,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 1,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 4,
+      "description": "* second step",
+      "startTime": 1634534905121,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 0,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 5,
+      "description": "When third step",
+      "startTime": 1634534905122,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 0,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 6,
+      "description": "And second step",
+      "startTime": 1634534905123,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 1,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 7,
+      "description": "But second except step",
+      "startTime": 1634534905124,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 4,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 8,
+      "description": "* third except step",
+      "startTime": 1634534905129,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 2,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 9,
+      "description": "Then assertion",
+      "startTime": 1634534905132,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 2,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 10,
+      "description": "And extra assertion",
+      "startTime": 1634534905134,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 5,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 11,
+      "description": "But except assertion",
+      "startTime": 1634534905140,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 1,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 12,
+      "description": "* except assertion",
+      "startTime": 1634534905142,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 2,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 13,
+      "description": "When first step",
+      "startTime": 1634534905144,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 2,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 14,
+      "description": "When second step",
+      "startTime": 1634534905146,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 4,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 15,
+      "description": "Then assertion",
+      "startTime": 1634534905151,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 2,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 16,
+      "description": "Then extra assertion",
+      "startTime": 1634534905154,
+      "children": [],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 1,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 17,
+      "description": "After",
+      "startTime": 1634534905156,
+      "children": [
+        {
+          "number": 18,
+          "description": "OktaAdmin deletes test accounts in OKTA",
+          "startTime": 1634534905168,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SUCCESS"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 13,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 19,
+      "description": "After",
+      "startTime": 1634534905169,
+      "children": [
+        {
+          "number": 20,
+          "description": "OktaAdmin closes browser",
+          "startTime": 1634534905179,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 379,
+          "result": "SUCCESS"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 391,
+      "result": "SUCCESS"
+    }
+  ],
+  "userStory": {
+    "id": "complex-scenario",
+    "storyName": "Complex scenario",
+    "path": "features/group/f4.feature",
+    "type": "feature"
+  },
+  "startTime": 1634534905106,
+  "testSource": "Cucumber",
+  "tags": [
+    {
+      "name": "group",
+      "type": "capability",
+      "displayName": "group"
+    },
+    {
+      "name": "group/Complex scenario",
+      "type": "feature",
+      "displayName": "Complex scenario"
+    },
+    {
+      "name": "testcase",
+      "type": "tag",
+      "displayName": "testcase"
+    },
+    {
+      "name": "userstory",
+      "type": "tag",
+      "displayName": "userstory"
+    }
+  ],
+  "featureTag": {
+    "name": "group/Complex scenario",
+    "type": "feature",
+    "displayName": "Complex scenario"
+  },
+  "result": "SUCCESS",
+  "duration": 468
+}

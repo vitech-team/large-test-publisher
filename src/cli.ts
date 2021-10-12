@@ -1,4 +1,4 @@
-import config, { RuntimeConfig } from './config';
+import { Config, RuntimeConfig } from './config';
 import dotenv from 'dotenv';
 import { TestCase } from './testcase/api';
 import { PublishOutcome, SyncOutcome, TmsClient } from './tms/api';
@@ -6,7 +6,7 @@ import { TestReport } from './report/api';
 
 dotenv.config();
 
-export class SyncSummary {
+class SyncSummary {
   total: number = 0;
   created: number = 0;
   updated: number = 0;
@@ -31,7 +31,7 @@ export class SyncSummary {
   }
 }
 
-export class PublishSummary {
+class PublishSummary {
   total: number = 0;
   successful: number = 0;
   failed: number = 0;
@@ -53,7 +53,7 @@ export class PublishSummary {
   }
 }
 
-async function synchronizeTestCases(testCases: TestCase[], tmsClient: TmsClient<any>): Promise<TestCase[]> {
+async function synchronizeTestCases(testCases: TestCase[], tmsClient: TmsClient<any, any>): Promise<TestCase[]> {
   let syncTestCases = [];
   let syncSummaries = [];
   for (let testCase of testCases) {
@@ -77,12 +77,9 @@ async function synchronizeTestCases(testCases: TestCase[], tmsClient: TmsClient<
   return syncTestCases;
 }
 
-async function publishTestReports(testReports: TestReport[], tmsClient: TmsClient<any>) {
-  let publishSummaries = [];
-  for (let testReport of testReports) {
-    let publishResult = await tmsClient.publishTestReport(testReport);
-    publishSummaries.push(...publishResult.outcomes.map(outcome => PublishSummary.of(outcome)));
-  }
+async function publishTestReports(testReports: TestReport[], tmsClient: TmsClient<any, any>) {
+  let publishResults = await tmsClient.publishTestReports(testReports);
+  let publishSummaries = publishResults.map(({ outcome }) => PublishSummary.of(outcome));
 
   let publishSummary = publishSummaries.reduce(PublishSummary.mergePublishSummary, new PublishSummary());
   console.log('\n==============================================================\n');
@@ -94,6 +91,8 @@ async function publishTestReports(testReports: TestReport[], tmsClient: TmsClien
 }
 
 async function main() {
+  let config: Config = require('../tms.config').default;
+
   let rt = new RuntimeConfig(config);
 
   let testCaseRepository = rt.getTestCaseRepository();

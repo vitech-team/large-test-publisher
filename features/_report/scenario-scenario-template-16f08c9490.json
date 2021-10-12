@@ -1,0 +1,262 @@
+{
+  "id": "few-parameterised-scenarios;scenario-template",
+  "name": "Scenario template",
+  "title": "Scenario template",
+  "manual": false,
+  "testSteps": [
+    {
+      "number": 1,
+      "description": "Scenario template #1 - p1: p1-ex1, p2: p2-ex1",
+      "startTime": 1634534905515,
+      "children": [
+        {
+          "number": 2,
+          "description": "Given precondition with p1-ex1 and p2-ex1",
+          "startTime": 1634534905516,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 3,
+          "description": "When first step",
+          "startTime": 1634534905517,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 4,
+          "description": "And second step",
+          "startTime": 1634534905518,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 5,
+          "description": "Then assertion",
+          "startTime": 1634534905519,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 6,
+          "description": "After",
+          "startTime": 1634534905520,
+          "children": [
+            {
+              "number": 7,
+              "description": "OktaAdmin deletes test accounts in OKTA",
+              "startTime": 1634534905530,
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 0,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 11,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 8,
+          "description": "After",
+          "startTime": 1634534905531,
+          "children": [
+            {
+              "number": 9,
+              "description": "OktaAdmin closes browser",
+              "startTime": 1634534905542,
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 304,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 315,
+          "result": "SUCCESS"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 341,
+      "result": "SUCCESS"
+    },
+    {
+      "number": 10,
+      "description": "Scenario template #2 - p1: p1-ex2, p2: p2-ex1",
+      "startTime": 1634534905857,
+      "children": [
+        {
+          "number": 11,
+          "description": "Given precondition with p1-ex2 and p2-ex1",
+          "startTime": 1634534905858,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 1,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 12,
+          "description": "When first step",
+          "startTime": 1634534905859,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 13,
+          "description": "And second step",
+          "startTime": 1634534905860,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 14,
+          "description": "Then assertion",
+          "startTime": 1634534905860,
+          "children": [],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 0,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 15,
+          "description": "After",
+          "startTime": 1634534905861,
+          "children": [
+            {
+              "number": 16,
+              "description": "OktaAdmin deletes test accounts in OKTA",
+              "startTime": 1634534905871,
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 0,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 11,
+          "result": "SUCCESS"
+        },
+        {
+          "number": 17,
+          "description": "After",
+          "startTime": 1634534905872,
+          "children": [
+            {
+              "number": 18,
+              "description": "OktaAdmin closes browser",
+              "startTime": 1634534905882,
+              "children": [],
+              "reportData": [],
+              "screenshots": [],
+              "duration": 311,
+              "result": "SUCCESS"
+            }
+          ],
+          "reportData": [],
+          "screenshots": [],
+          "duration": 322,
+          "result": "SUCCESS"
+        }
+      ],
+      "reportData": [],
+      "screenshots": [],
+      "duration": 348,
+      "result": "SUCCESS"
+    }
+  ],
+  "userStory": {
+    "id": "few-parameterised-scenarios",
+    "storyName": "Few parameterised scenarios",
+    "path": "features/group/f3.feature",
+    "type": "feature"
+  },
+  "dataTable": {
+    "scenarioOutline": "Given precondition with <p1> and <p2>\nWhen first step\nAnd second step\nThen assertion",
+    "dataSetDescriptors": [
+      {
+        "name": "",
+        "description": "",
+        "startRow": 0,
+        "rowCount": 2
+      }
+    ],
+    "headers": [
+      "p1",
+      "p2"
+    ],
+    "rows": [
+      {
+        "values": [
+          "p1-ex1",
+          "p2-ex1"
+        ],
+        "result": "SUCCESS"
+      },
+      {
+        "values": [
+          "p1-ex2",
+          "p2-ex1"
+        ],
+        "result": "SUCCESS"
+      }
+    ],
+    "predefinedRows": true
+  },
+  "startTime": 1634534905515,
+  "testSource": "Cucumber",
+  "tags": [
+    {
+      "name": "group",
+      "type": "capability",
+      "displayName": "group"
+    },
+    {
+      "name": "group/Few parameterised scenarios",
+      "type": "feature",
+      "displayName": "Few parameterised scenarios"
+    },
+    {
+      "name": "testcase",
+      "type": "tag",
+      "displayName": "testcase"
+    },
+    {
+      "name": "userstory",
+      "type": "tag",
+      "displayName": "userstory"
+    }
+  ],
+  "featureTag": {
+    "name": "group/Few parameterised scenarios",
+    "type": "feature",
+    "displayName": "Few parameterised scenarios"
+  },
+  "duration": 690
+}

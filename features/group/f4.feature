@@ -1,6 +1,6 @@
 Feature: Complex scenario
 
-  @testcase:5
+  @testcase:5 @userstory:1 @userstory:6
   Scenario: Complex scenario
     Given precondition
     And first step

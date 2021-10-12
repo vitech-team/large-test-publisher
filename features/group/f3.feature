@@ -1,6 +1,6 @@
 Feature: Few parameterised scenarios
 
-  @testcase:3
+  @testcase:3 @userstory:1
   Scenario Template: Scenario template
     Given precondition with <p1> and <p2>
     When first step
@@ -12,7 +12,7 @@ Feature: Few parameterised scenarios
       | p1-ex1 | p2-ex1 |
       | p1-ex2 | p2-ex1 |
 
-  @testcase:4
+  @testcase:4 @userstory:1
   Scenario Outline: Scenario outline
     Given precondition
     When step with <param>
