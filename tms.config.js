@@ -1,6 +1,4 @@
-import { Config } from './src/config';
-
-const tmsConfig: Config = {
+const config = {
   cwd: process.cwd(),
   specs: ['features/**/*.feature'],
 
@@ -17,4 +15,4 @@ const tmsConfig: Config = {
   },
 };
 
-export default tmsConfig;
+module.exports = config

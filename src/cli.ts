@@ -3,6 +3,7 @@ import dotenv from 'dotenv';
 import { TestCase } from './testcase/api';
 import { PublishOutcome, SyncOutcome, TmsClient } from './tms/api';
 import { TestReport } from './report/api';
+import path from "path";
 
 dotenv.config();
 
@@ -90,8 +91,8 @@ async function publishTestReports(testReports: TestReport[], tmsClient: TmsClien
   console.log('\n==============================================================\n');
 }
 
-async function main() {
-  let config: Config = require('../tms.config').default;
+export default async function main(): Promise<void> {
+  let config: Config = require(path.resolve(process.cwd(), 'tms.config.js'));
 
   let rt = new RuntimeConfig(config);
 
@@ -117,5 +118,3 @@ async function main() {
 
   console.log("That's it!");
 }
-
-(async () => main())();

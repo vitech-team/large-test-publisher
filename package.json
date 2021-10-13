@@ -1,10 +1,14 @@
 {
-  "name": "gherkin-azure-devops",
-  "version": "1.0.0",
+  "name": "large-test-publisher",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "run": "ts-node src/cli.ts"
+    "clean": "rimraf lib",
+    "compile": "tsc --build tsconfig.node.json",
+    "prerun-compiled": "failsafe clean compile",
+    "run-compiled": "./bin/large-test-publisher",
+    "run": "ts-node run.ts"
   },
   "dependencies": {
     "@cucumber/cucumber": "^7.3.1",
@@ -18,11 +22,16 @@
     "js2xmlparser": "^4.0.1",
     "prettier": "^2.4.1",
     "tiny-types": "^1.16.1",
-    "ts-node": "^10.2.1",
-    "typed-rest-client": "^1.8.6",
-    "typescript": "^4.4.3"
+    "typed-rest-client": "^1.8.6"
   },
   "devDependencies": {
-    "@types/node": "^16.10.3"
+    "@types/node": "^16.10.3",
+    "npm-failsafe": "^0.4.3",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.3.0",
+    "typescript": "^4.4.4"
+  },
+  "bin": {
+    "large-test-publisher": "./bin/large-test-publisher"
   }
 }
