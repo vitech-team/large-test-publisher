@@ -12,6 +12,7 @@ export interface AzureDevopsOpts {
   accessToken: string;
   projectName: string;
   testPlan: string;
+  areaPath: string;
   buildId: string;
 }
 

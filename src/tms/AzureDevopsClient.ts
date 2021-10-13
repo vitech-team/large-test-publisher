@@ -43,13 +43,16 @@ export class AzureDevopsClient extends TmsClient<number, RunContext> {
 
   private readonly testPlanName: string;
 
+  private readonly areaPath: string;
+
   private readonly buildId: string;
 
-  constructor({ serviceUrl, accessToken, projectName, testPlan, buildId }: AzureDevopsOpts) {
+  constructor({ serviceUrl, accessToken, projectName, testPlan, areaPath, buildId }: AzureDevopsOpts) {
     super();
     this.api = new azdev.WebApi(serviceUrl, azdev.getPersonalAccessTokenHandler(accessToken));
     this.project = projectName;
     this.testPlanName = testPlan;
+    this.areaPath = areaPath;
     this.buildId = buildId;
   }
 
@@ -172,6 +175,7 @@ export class AzureDevopsClient extends TmsClient<number, RunContext> {
       testPlan = await testPlanApi.createTestPlan(
         {
           name: this.testPlanName,
+          areaPath: this.areaPath
         },
         this.project
       );
