@@ -7,7 +7,8 @@ const config = {
   reports: ['features/_report/*.json'],
 
   vcs: {
-    message: 'Synchronized test cases'
+    enabled: false,
+    message: 'Synchronized test cases',
   },
 
   azure_devops: {
@@ -19,4 +20,4 @@ const config = {
   },
 };
 
-module.exports = config
+module.exports = config;

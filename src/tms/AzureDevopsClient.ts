@@ -31,6 +31,8 @@ export class AzureDevopsClient extends TmsClient<number, RunContext> {
   private readonly _testCaseIdAttr = 'testcase';
   private readonly _userStoryIdAttr = 'userstory';
 
+  private readonly _noUserStoryId = -1;
+
   private readonly api: WebApi;
 
   private _witApi?: IWorkItemTrackingApi;
@@ -145,9 +147,7 @@ export class AzureDevopsClient extends TmsClient<number, RunContext> {
     let testSuites = await testPlanApi.getTestSuites(this.project, testPlan.id);
     let suites: TestSuiteByUserStoryId = {};
     for (let suite of testSuites) {
-      if (suite.requirementId != undefined) {
-        suites[suite.requirementId] = suite;
-      }
+      suites[suite.requirementId ?? this._noUserStoryId] = suite;
     }
 
     return {
@@ -257,23 +257,54 @@ export class AzureDevopsClient extends TmsClient<number, RunContext> {
     for (let userStoryId of userStoryIds) {
       let testSuite = await this.getTestSuite(userStoryId, context);
 
-      let [testPoint] = await testApi.getPoints(
-        this.project,
-        context.planId,
-        testSuite.id,
-        undefined,
-        undefined,
-        testCaseId.toString()
-      );
-
-      if (testPoint?.id == undefined) {
-        throw new Error(`Test point doesn't exist for test case #${testCaseId}`);
-      }
+      let testPoint = await this.getTestPoint(testCaseId, testSuite.id, context);
 
       points.push({ userStoryId, testPoint });
+
+      // remove from the root suite if at least one user story is assigned
+      await testApi.removeTestCasesFromSuiteUrl(
+        this.project,
+        context.planId,
+        context.rootSuiteId,
+        testCaseId.toString()
+      );
+    }
+
+    if (points.length == 0) {
+      // if test case is not assigned to any user story - add it to the root suite
+      let testPoint;
+      try {
+        testPoint = await this.getTestPoint(testCaseId, context.rootSuiteId, context);
+      } catch (err) {
+        // maybe test case is not in the suite yet - just adding it and trying again
+        await testApi.addTestCasesToSuite(this.project, context.planId, context.rootSuiteId, testCaseId.toString());
+
+        testPoint = await this.getTestPoint(testCaseId, context.rootSuiteId, context);
+      }
+
+      points.push({ userStoryId: this._noUserStoryId, testPoint });
     }
 
     return points;
+  }
+
+  private async getTestPoint(testCaseId: number, suiteId: number, context: RunContext): Promise<TestPoint> {
+    let testApi = await this.testApi();
+
+    let [testPoint] = await testApi.getPoints(
+      this.project,
+      context.planId,
+      suiteId,
+      undefined,
+      undefined,
+      testCaseId.toString()
+    );
+
+    if (testPoint?.id == undefined) {
+      throw new Error(`Test point doesn't exist for test case #${testCaseId}`);
+    }
+
+    return testPoint;
   }
 
   private async getTestSuite(userStoryId: number, context: RunContext) {

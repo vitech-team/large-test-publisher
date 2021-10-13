@@ -16,6 +16,7 @@ export interface AzureDevopsOpts {
 }
 
 export interface VcsOpts {
+  enabled: string;
   message: string;
 }
 
@@ -27,7 +28,7 @@ export interface Config {
 
   reports: string[];
 
-  vcs: VcsOpts
+  vcs: VcsOpts;
 
   azure_devops?: AzureDevopsOpts;
 }
