@@ -122,7 +122,7 @@ class GherkinTestCase extends TestCase {
   }
 
   addMetadata(...metadata: TestMetadata[]): void {
-    this.scenario.tags = this.scenario.tags.concat(
+    let tags = this.scenario.tags.concat(
       metadata.map(tag => {
         this.modified = true;
         return {
@@ -131,6 +131,12 @@ class GherkinTestCase extends TestCase {
         } as Tag;
       })
     );
+    let collator = new Intl.Collator(undefined, {
+      numeric: true,
+      sensitivity: 'base',
+    });
+    tags.sort((t1, t2) => collator.compare(t1.name, t2.name));
+    this.scenario.tags = tags;
   }
 }
 
