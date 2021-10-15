@@ -92,7 +92,7 @@ async function publishTestReports(testReports: TestReport[], tmsClient: TmsClien
 }
 
 export default async function main(): Promise<void> {
-  let config: Config = require(path.resolve(process.cwd(), 'tms.config.js'));
+  let config: Config = require(path.resolve(process.cwd(), 'ltp.config.js'));
 
   let rt = new RuntimeConfig(config);
 
