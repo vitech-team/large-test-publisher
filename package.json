@@ -6,7 +6,8 @@
   "scripts": {
     "clean": "rimraf lib",
     "compile": "tsc --build tsconfig.node.json",
-    "prerun-compiled": "failsafe clean compile",
+    "prepare": "failsafe clean compile",
+    "prerun-compiled": "npm run prepare",
     "run-compiled": "./bin/large-test-publisher",
     "run": "ts-node run.ts"
   },
