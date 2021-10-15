@@ -195,7 +195,7 @@ export class GherkinFeatureRepository implements TestCaseRepository<GherkinTestC
       if (testCase.modified) {
         result.push(testCase);
 
-        let text = pretty(testCase.document, testCase.syntax);
+        let text = pretty(testCase.document, testCase.syntax).replace(/\s+$/gm, '');
 
         await writeFile(testCase.source(), text);
       }
